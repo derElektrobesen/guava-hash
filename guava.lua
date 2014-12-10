@@ -12,7 +12,7 @@ do
 	local r,e = pcall(function() return ffi.load("guava") end)
 	if r then libguava = e
 	else
-	r,e = pcall(function() return ffi.load("./libguava.so") end)
+	r,e = pcall(function() return ffi.load("libguava.so") end)
 	if r then libguava = e
 	else
 	error(e)

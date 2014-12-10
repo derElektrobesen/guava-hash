@@ -1,13 +1,13 @@
 o:
-	gcc -c -Wall -Werror -fpic guava.c
+	gcc -c -Wall -Werror -fpic $(CFLAGS) guava.c
 
-so:
+so: o
 	gcc -shared -o libguava.so guava.o
 
-main:
+main: so
 	gcc -L. -Wl,-rpath=. -Wall -o test main.c -lguava
 	
-javatest:
+javatest: so
 	javac guava.java && java guava > testdata
 
-all: o so main
+all: main
